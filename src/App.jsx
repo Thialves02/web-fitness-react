@@ -1,15 +1,28 @@
 import './App.css';
-import CtxApp from "../../context/CtxApp";
+import GlobalStyle from './styles/global'
+import CtxApp from "../src/context/CtxApp";
+import Home from './pages/Home/Home';
+import Navbar from './components/Navbar/Navbar';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
-    <CtxApp>
-      {/* <Navbar />
-      <main>
-        <Pesquisa />
-        <Funcionarios />
-      </main> */}
-    </CtxApp>
+    <>
+      <GlobalStyle></GlobalStyle>
+      <CtxApp>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+          </Routes>
+        </Router>
+      </CtxApp>
+    </>
   );
 }
 
