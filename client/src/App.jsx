@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Cadastro from './pages/Cadastro/Cadastro';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/cadastro" element={<Cadastro />}></Route>
           </Routes>
         </Router>
       </CtxApp>
