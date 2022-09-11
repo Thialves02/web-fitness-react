@@ -1,5 +1,5 @@
 import './App.css';
-import GlobalStyle from './styles/global'
+import GlobalStyle from './assets/styles/global'
 import CtxApp from "../src/context/CtxApp";
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
@@ -10,6 +10,7 @@ import {
   Link
 } from "react-router-dom";
 import Cadastro from './pages/Cadastro/Cadastro';
+import InformacoesUsuario from './pages/InformacoesUsuario/InformacoesUsuario';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/cadastro" element={<Cadastro />}></Route>
+            <Route path="/infoUsuario" element={<InformacoesUsuario />}></Route>
           </Routes>
         </Router>
       </CtxApp>
