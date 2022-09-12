@@ -16,6 +16,7 @@ export const NavbarContainer = styled.header`
 
     img {
         margin-left: 50px;
+        outline:none;
     }
 
     nav{
