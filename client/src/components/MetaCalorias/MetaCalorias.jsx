@@ -16,15 +16,15 @@ export default function MetaCalorias({ KcalTotal, KcalUsadas }) {
                 <h2>Meta {KcalTotal}kcal</h2>
                 <div>
                     <svg
-                        class="progress-ring"
+                        className="progress-ring"
                         width="260"
                         height="260">
                         <circle
                             strokeDasharray={`${circumference} ${circumference}`}
                             strokeDashoffset={progressoKcal(90)}
-                            class="progress-ring__circle"
+                            className="progress-ring__circle"
                             stroke="white"
-                            stroke-width="10"
+                            strokeWidth="10"
                             fill="transparent"
                             r={raioCirculo}
                             cx="130"
