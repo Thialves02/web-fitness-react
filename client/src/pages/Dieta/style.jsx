@@ -38,3 +38,13 @@ export const MetasMacros = styled.div`
     
 `
 
+export const Refeicoes = styled.div`
+    padding-top:50px ;
+    background-color:#1A1A1A ;
+    display:flex ;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    
+`
+
