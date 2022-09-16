@@ -39,10 +39,7 @@ export const InfoContainer = styled.main`
         align-items: center;
     }
 
-    form span{
-        color:#e80000;
-        font-size:13px ;
-    }
+    
 
     form div.container-inputs{
         display: grid ;

@@ -18,4 +18,8 @@ export const InputContainer = styled.div`
         border: none;
         padding: 10px;
     }
+    span{
+        color:#e80000;
+        font-size:13px ;
+    }
 `
