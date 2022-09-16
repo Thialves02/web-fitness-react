@@ -1,83 +1,77 @@
 import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, } from 'formik'
 import * as yup from 'yup'
+import { Api } from '../../api/Api'
+import { ContainerUsuario } from './style'
+import Input from '../../components/Inputs/Input'
+import Button from '../../components/Button/Button'
+import { useNavigate } from 'react-router-dom'
 
 export default function Cadastro() {
+    let navigate = useNavigate()
 
-    const handleClickLogin = (e) => {
-        console.log(e)
+    //Função para cadastrar usuario
+    const cadastraUsuario = async ({ email, senha, nome }) => {
+        const response = await Api.post('api/users/', { 'nome': nome, 'email': email, 'senha': senha })
+        const body = await response.json()
+
+        //Caso o cadastro efetue corretamente o usuário é logado automaticamente
+        if (body.createdAt) {
+            const response = await Api.post('api/users/login', { 'email': email, 'senha': senha })
+            const body = await response.json()
+
+            localStorage.setItem('token', body.token);
+            navigate('/')
+        } else {
+            alert(body)
+        }
     }
 
-    const handleClickCadastro = (e) => {
-        console.log(e)
-    }
-
-    const validacaoLogin = yup.object().shape({
-        email: yup.string().email("Não é um email").required("O email é obrigatório"),
-        senha: yup.string().min(5, "A senha deve ter 5 caracteres").required("A senha é obrigatória")
-    })
-
+    //Função para validação de todos os campos do Form de cadastro
     const validacaoCadastro = yup.object().shape({
         email: yup.string().email("Não é um email").required("O email é obrigatório"),
-        senha: yup.string().min(5, "A senha deve ter 5 caracteres").required("A senha é obrigatória"),
-        confirmaSenha: yup.string().oneOf([yup.ref("senha"), null], "As senhas não são iguais")
+        senha: yup.string().required("A senha é obrigatória"),
+        confirmarSenha: yup.string().oneOf([yup.ref("senha"), null], "As senhas não são iguais"),
+        nome: yup.string().required("O nome é obrigatório"),
     })
 
     return (
-        <div>
-            <h1>Login</h1>
+        <ContainerUsuario>
             <Formik
                 initialValues={{
                     email: '',
                     senha: '',
+                    confirmarSenha: '',
+                    nome: ''
                 }}
-                onSubmit={handleClickLogin}
-                validationSchema={validacaoLogin}
-            >
-                <Form>
-                    <Field name="email" placeholder="Email" />
-                    <ErrorMessage
-                        component="span"
-                        name="email"
-                    />
-                    <Field name="senha" placeholder="Senha" />
-                    <ErrorMessage
-                        component="span"
-                        name="senha"
-                    />
-                    <button type="submit">Entrar</button>
-                </Form>
-            </Formik>
-
-            <h1>Cadastro</h1>
-            <Formik
-                initialValues={{
-                    email: '',
-                    senha: '',
-                    confirmaSenha: ''
-                }}
-                onSubmit={handleClickCadastro}
+                onSubmit={cadastraUsuario}
                 validationSchema={validacaoCadastro}
             >
                 <Form>
-                    <Field name="email" placeholder="Email" />
-                    <ErrorMessage
-                        component="span"
-                        name="email"
+                    <h1>Cadastro</h1>
+                    <Input
+                        label='Nome'
+                        name='nome'
                     />
-                    <Field name="senha" placeholder="Senha" />
-                    <ErrorMessage
-                        component="span"
-                        name="senha"
+                    <Input
+                        label='Email'
+                        name='email'
                     />
-                    <Field name="confirmaSenha" placeholder="Confirmação de senha" />
-                    <ErrorMessage
-                        component="span"
-                        name="confirmaSenha"
+                    <Input
+                        label='Senha'
+                        name='senha'
                     />
-                    <button type="submit">Entrar</button>
+                    <Input
+                        label='Confirmar senha'
+                        name='confirmarSenha'
+                    />
+                    <Button
+                        type='submit'
+                        name='cadastrar'
+                        label='Cadastrar'
+                    />
                 </Form>
             </Formik>
-        </div>
+        </ContainerUsuario>
     )
 }
