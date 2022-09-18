@@ -2,16 +2,20 @@ import styled from "styled-components"
 import { media } from "../../assets/styles/media"
 
 export const NavbarContainer = styled.header`
-    position:absolute ;
+    position:relative ;
     display:flex;
     align-items:center;
     justify-content:space-between;
     background-color:#282828;
-    height:80px;
+    height:8vh;
     width:100% ;
 
-    ${media('mobile')}{
-        position:relative ;
+    .aberto{
+        height:20vh;
+
+    }
+    .fechado{
+        height:0vh;
     }
 
     img {
@@ -23,14 +27,36 @@ export const NavbarContainer = styled.header`
         display:flex;
         justify-content:space-between;
         margin-right: 50px;
-        width: 500px;
+        width: 40vw;
+        max-width:600px;
     }
 
-    nav a {
+    nav a, nav p {
         cursor: pointer;
         text-decoration:none ;
         font-size:16px;
         font-weight:bold ;
         color: #ffff;
+    }
+`
+
+export const DropDownMenu = styled.div`
+    background-color:#282828;
+    transition:.6s all ease;
+    position:absolute;
+    display:flex ;
+    align-items:center;
+    flex-direction:column ;
+    top:8vh;
+    right:0;
+    width:150px;
+    z-index:0;
+    overflow:hidden;
+
+     a {
+        text-align:center ;
+        padding:5px 0;
+        border-bottom:1px solid #ffff;
+        width:80%;
     }
 `

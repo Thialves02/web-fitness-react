@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react'
 import Alimento from '../Alimento/Alimento'
 import Button from '../Button/Button'
@@ -38,7 +38,7 @@ export default function Refeicao({ name }) {
     const alimentos = JSON.parse(localStorage.getItem(name))
 
     const visibilidadeAlimento = () => {
-        visivel == 'none' ? setVisivel('block') : setVisivel('none')
+        visivel === 'none' ? setVisivel('block') : setVisivel('none')
     }
     return (
         <RefeicaoContainer>
