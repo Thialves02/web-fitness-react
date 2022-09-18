@@ -2,6 +2,7 @@ import React from 'react'
 import { MetaKcalContainer } from './style'
 
 export default function MetaCalorias({ KcalTotal, KcalUsadas }) {
+    const porcentagemKcal = KcalUsadas * 100 / KcalTotal
     const KcalRestantes = KcalTotal - KcalUsadas
 
     const raioCirculo = 120
@@ -21,7 +22,7 @@ export default function MetaCalorias({ KcalTotal, KcalUsadas }) {
                         height="260">
                         <circle
                             strokeDasharray={`${circumference} ${circumference}`}
-                            strokeDashoffset={progressoKcal(90)}
+                            strokeDashoffset={progressoKcal(porcentagemKcal)}
                             className="progress-ring__circle"
                             stroke="white"
                             strokeWidth="10"
