@@ -17,4 +17,9 @@ export const SelectContainer = styled.div`
         outline: none;
         border: none;
     }
+
+    span {
+        color:#e80000;
+        font-size:13px ;
+    }
 `

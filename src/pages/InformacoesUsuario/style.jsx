@@ -7,7 +7,7 @@ export const InfoContainer = styled.main`
     justify-content : center ;
     align-items : center ;
     height:100vh;
-    background-image:url(${background});
+    /* background-image:url(${background}); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -37,6 +37,10 @@ export const InfoContainer = styled.main`
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        button {
+            margin-top:25px ;
+        }
     }
 
     

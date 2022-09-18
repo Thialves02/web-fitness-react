@@ -6,12 +6,7 @@ export const ContainerUsuario = styled.section`
     flex-direction:column;
     justify-content :center;
     align-items :center;
-    height: 100vh;
-    
-    
-    ${media('mobile')}{
-        height: 90vh;
-    }
+    height: 92vh;
 
     form {
         position: relative;
@@ -25,9 +20,13 @@ export const ContainerUsuario = styled.section`
         max-width:90% ;
     }
 
-    h1,label,button{
+    h1,label,button,a{
         color: #ffff;
         font-family: 'Iceberg', sans-serif;
+    }
+
+    a {
+        text-decoration:none
     }
 
     h1 {

@@ -6,7 +6,7 @@ export const MinhasMetas = styled.section`
     flex-direction:column;
     justify-content :center;
     align-items :center;
-    padding:150px 0 50px;
+    padding:50px 0;
     background-color:#282828;
 
     ${media('mobile')}{
